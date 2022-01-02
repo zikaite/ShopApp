@@ -1,0 +1,25 @@
+﻿
+@model ShopApp.Dtos.AddItem
+
+@using (Html.BeginForm("Add", "Items", FormMethod.Post))
+{
+<div class="mb-3 col-5">
+            @Html.LabelFor(a => a.Item.Name)
+            @Html.TextBoxFor(a => a.Item.Name)
+            @Html.ValidationMessageFor(a => a.Item.Name)
+</div>
+
+ <div class="mb-3 col-5">     
+            @Html.LabelFor(a => a.Item.ShopId)
+            @Html.DropDownListFor(a => a.Item.ShopId, new SelectList(@Model.AllShops, "Id", "Name"))
+            @Html.ValidationMessageFor(a => a.Item.ShopId)
+</div>
+<div class="mb-3 col-5">
+            @Html.LabelFor(a => a.Tags)
+            @Html.ListBoxFor(a => a.SelectedTagIds, new MultiSelectList(@Model.Tags, "Id", "Name"), new {@class = "form-control"})
+            @Html.ValidationMessageFor(a => a.Tags)
+ </div>
+
+
+    <input type="submit" value="Submit"/>
+}

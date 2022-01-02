@@ -1,0 +1,33 @@
+﻿@model List<Item>
+
+
+
+<h3>Items List</h3>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>Item Id</th>
+        <th>Item Name</th>
+        <th>Expiry Date</th>
+        <th>Shop Name</th>        
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.ExpiryDate</td>
+            <td>@item.Shop.Name</td>
+
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Items", new {id = item.Id}, new {@class = "btn btn-danger"})
+                @Html.ActionLink("Edit", "Edit", "Items", new {id = item.Id}, new {@class = "btn btn-success"})
+            </td>
+        </tr>    
+    }
+    <div class="d-flex w-100 justify-content-between">
+    @Html.ActionLink("Add", "Add", "Items", new {}, new {@class = "btn btn-primary"})
+    </div>
+</table>

@@ -1,0 +1,12 @@
+﻿@model ShopApp.Models.Shop
+
+@using (Html.BeginForm("Add", "Shop", FormMethod.Post))
+{
+<div>
+            @Html.LabelFor(a => a.Name)
+            @Html.TextBoxFor(a => a.Name)
+            @Html.ValidationMessageFor(a => a.Name)
+</div>
+
+    <input type="submit" value="Submit"/>
+}
